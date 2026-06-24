@@ -11,7 +11,7 @@ trash with their original path and deletion date recorded, and can be restored.
 This tool is provided **as is, without warranty of any kind**. Installing and
 using it — including configuring any AI agent (such as Claude) to use it, and
 relying on the `rm` block — is **entirely your own responsibility**. The author
-(MarceloXP) is **not responsible** for how Claude or any other tool behaves in
+is **not responsible** for how Claude or any other tool behaves in
 your environment, nor for any data loss, damage, or other consequence arising
 from its use. If you need a guarantee, verify the behavior yourself (see
 [Verifying the block is active](#verifying-the-block-is-active)).

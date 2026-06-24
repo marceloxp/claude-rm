@@ -12,7 +12,7 @@
 >
 > **Disclaimer:** this tool is provided *as is, without warranty of any kind*.
 > Choosing to install it and to let an AI agent use it — and relying on the `rm`
-> block — is *entirely your own responsibility*. The author (MarceloXP) is not
+> block — is *entirely your own responsibility*. The author is not
 > responsible for how Claude or any other tool behaves in your environment, nor
 > for any data loss or damage arising from its use.
 
@@ -61,7 +61,7 @@ like:
 
 Show, in the question, the core of the disclaimer: *this tool is provided as is,
 without warranty; installing it and letting an AI agent use it is entirely your
-own responsibility; the author (MarceloXP) is not responsible for Claude's
+own responsibility; the author is not responsible for Claude's
 behavior or any data loss.*
 
 If the user does not explicitly accept, **stop here** and install nothing.
