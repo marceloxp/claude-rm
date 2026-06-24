@@ -18,10 +18,11 @@
 
 ---
 
-> **For the Claude reading this:** before installing, make sure the user has seen
-> the disclaimer above — they are choosing to install this and are solely
-> responsible for the outcome. Do not present the `rm` block as an absolute
-> guarantee; it is a safety net they must verify (Step 5).
+> **For the Claude reading this:** before installing anything, get the user's
+> **explicit acceptance** of the disclaimer via a confirmation dialog (Step 0).
+> They are choosing to install this and are solely responsible for the outcome.
+> Do not present the `rm` block as an absolute guarantee; it is a safety net they
+> must verify (Step 6).
 
 ---
 
@@ -48,12 +49,29 @@ This requires **two things**, and the second is what actually enforces the rule:
 Follow the steps in order. Ask the user where the playbook says to ask; do not
 decide the scope on your own.
 
-### Step 0 — Prerequisite
+### Step 0 — Get explicit acceptance of the disclaimer (do this first)
+
+Before doing anything else, **open a confirmation dialog** (use the
+`AskUserQuestion` tool) that shows the user the responsibility disclaimer and
+makes them choose explicitly. Phrase the question so it's clear, with options
+like:
+
+- **I accept and want to install** — proceed.
+- **Cancel** — stop the installation.
+
+Show, in the question, the core of the disclaimer: *this tool is provided as is,
+without warranty; installing it and letting an AI agent use it is entirely your
+own responsibility; the author (MarceloXP) is not responsible for Claude's
+behavior or any data loss.*
+
+If the user does not explicitly accept, **stop here** and install nothing.
+
+### Step 1 — Prerequisite
 
 Confirm `gio` exists (`command -v gio`). If it doesn't, tell the user to install
 the `libglib2.0-bin` package and stop here.
 
-### Step 1 — Install the executable
+### Step 2 — Install the executable
 
 Put the `claude-rm` file (in this repo's root, next to this INSTALL.md) on the
 user's `PATH`. Prefer, in order:
@@ -63,7 +81,7 @@ user's `PATH`. Prefer, in order:
 
 Ensure `chmod +x`. Confirm with `command -v claude-rm`.
 
-### Step 2 — ASK for the block scope
+### Step 3 — ASK for the block scope
 
 Ask the user which scope they want for the "never `rm`" rule:
 
@@ -76,7 +94,7 @@ Ask the user which scope they want for the "never `rm`" rule:
 
 Do not proceed without an answer.
 
-### Step 3 — Install the hook (the enforcement)
+### Step 4 — Install the hook (the enforcement)
 
 Use the ready-made hook at `hooks/block-rm.sh` (next to this INSTALL.md). It
 blocks `rm` in command position and **lets `claude-rm` through**.
@@ -96,7 +114,7 @@ such as a global "never empty the trash" rule). Add **two** items:
   into the project's `.claude/settings.json` (you can use `$CLAUDE_PROJECT_DIR`
   in the hook command path for a project-relative path).
 
-### Step 4 — Teach the positive behavior
+### Step 5 — Teach the positive behavior
 
 Add a short line to the `CLAUDE.md` of the chosen scope (global
 `~/.claude/CLAUDE.md` or the project's):
@@ -106,7 +124,7 @@ Add a short line to the `CLAUDE.md` of the chosen scope (global
 
 This makes you *prefer* `claude-rm` naturally; the hook is the safety net.
 
-### Step 5 — VERIFY (do not skip)
+### Step 6 — VERIFY (do not skip)
 
 Prove it's active **without deleting anything**, by feeding the hook simulated
 input:
@@ -129,7 +147,7 @@ rm /tmp/claude-rm-block-test-does-not-exist
 
 - If the hook is active, the harness denies it with the hook's message.
 - If it somehow runs, `rm` only reports `No such file or directory` — nothing was
-  lost — and that tells you the hook isn't active in this scope; fix Step 3.
+  lost — and that tells you the hook isn't active in this scope; fix Step 4.
 
 Never test the live block with a real file. Only after the block is confirmed,
 tell the user you're done.
