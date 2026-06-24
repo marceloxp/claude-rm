@@ -9,6 +9,19 @@
 >
 > The rest of this file is a playbook for Claude to run with you. If you'd rather
 > set it up yourself, see **Manual installation** in the [README](README.md).
+>
+> **Disclaimer:** this tool is provided *as is, without warranty of any kind*.
+> Choosing to install it and to let an AI agent use it — and relying on the `rm`
+> block — is *entirely your own responsibility*. The author (MarceloXP) is not
+> responsible for how Claude or any other tool behaves in your environment, nor
+> for any data loss or damage arising from its use.
+
+---
+
+> **For the Claude reading this:** before installing, make sure the user has seen
+> the disclaimer above — they are choosing to install this and are solely
+> responsible for the outcome. Do not present the `rm` block as an absolute
+> guarantee; it is a safety net they must verify (Step 5).
 
 ---
 

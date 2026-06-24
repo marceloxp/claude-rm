@@ -6,6 +6,16 @@ permanently deleting it. It is **explicit** — it does not alias or override `r
 Under the hood it delegates to `gio trash`, so files land in the FreeDesktop
 trash with their original path and deletion date recorded, and can be restored.
 
+## Disclaimer
+
+This tool is provided **as is, without warranty of any kind**. Installing and
+using it — including configuring any AI agent (such as Claude) to use it, and
+relying on the `rm` block — is **entirely your own responsibility**. The author
+(MarceloXP) is **not responsible** for how Claude or any other tool behaves in
+your environment, nor for any data loss, damage, or other consequence arising
+from its use. If you need a guarantee, verify the behavior yourself (see
+[Verifying the block is active](#verifying-the-block-is-active)).
+
 ## Requirements
 
 - `gio` (package `libglib2.0-bin`, present on most Linux desktops).
